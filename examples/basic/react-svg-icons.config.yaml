@@ -1,5 +1,2 @@
 input: icons
 outDir: generated
-
-# Words dropped from every icon name.
-removeWords: [vuesax, icon]

@@ -6,9 +6,6 @@ The config is data, not code: YAML or JSON. It is a file named `react-svg-icons.
 ```yaml
 input: icons
 outDir: generated
-
-# Words dropped from every icon name.
-removeWords: [vuesax, icon]
 ```
 
 **Relative paths are relative to the folder that holds the config file**, not to where you run the command. An option the tool does not know, such as a typo, stops the build with a message that lists the valid names.
@@ -35,10 +32,10 @@ removeWords: [vuesax, icon]
 Words that appear in your file names and must not be in the component name. A word is compared without regard to case, against each word of the file name:
 
 ```yaml
-removeWords: [vuesax, icon]
+removeWords: [ic, icon]
 ```
 
-`vuesax linear eye.svg` in `linear/` becomes `Eye`. How the whole name is made is in [[Naming]].
+`ic linear eye.svg` in `linear/` becomes `Eye`. How the whole name is made is in [[Naming]].
 
 ## `defaultSize` and `defaultStrokeWidth`
 
@@ -71,7 +68,7 @@ The same options in `react-svg-icons.config.json`:
 {
   "input": "icons",
   "outDir": "generated",
-  "removeWords": ["vuesax", "icon"]
+  "removeWords": ["ic", "icon"]
 }
 ```
 

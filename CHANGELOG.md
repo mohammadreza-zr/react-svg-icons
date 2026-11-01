@@ -4,7 +4,7 @@
 
 First release.
 
-- Turns a folder of SVGs (for example exported from Figma) into React components: SVGO-optimised, typed, with `size`, `color`, `stroke`, `fill`, `strokeWidth`, `opacity`, `title`, a forwarded `ref`, and `colors`, `opacities` and `strokeWidths` lists with one entry per colour of the drawing.
+- Turns a folder of SVGs into React components: SVGO-optimised, typed, with `size`, `color`, `stroke`, `fill`, `strokeWidth`, `opacity`, `title`, a forwarded `ref`, and `colors`, `opacities` and `strokeWidths` lists with one entry per colour of the drawing.
 - Writes a typed registry (`variant.name`, one lazy import per icon) and a lazy `Icon` component. A nested folder is part of the name, and two icons with one name stop the run.
 - The config is data, never a script: YAML (`react-svg-icons.config.yaml`, `.yml`), JSON (`react-svg-icons.config.json`) or an rc file (`.react-svg-iconsrc` and its `.yaml`, `.yml` and `.json` variants). Options: `input`, `outDir`, `removeWords`, `defaultSize`, `defaultStrokeWidth`, `format`. An unknown option is an error.
 - Formats the output with the project's own prettier and config (`format: prettier`, or `false` for raw text).

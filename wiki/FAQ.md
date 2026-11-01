@@ -4,7 +4,7 @@
 
 ### Why not SVGR?
 
-[SVGR](https://react-svgr.com) turns an SVG into a component too. This tool does that for a whole folder of Figma exports and adds what an icon set needs: a prop per colour (`colors`, `opacities`, `strokeWidths`), a typed registry with a lazy `Icon`, names made from the folder structure, cleanup, and a `--check` for CI. If you need one component from one SVG, SVGR is enough.
+[SVGR](https://react-svgr.com) turns an SVG into a component too. This tool does that for a whole folder of SVGs and adds what an icon set needs: a prop per colour (`colors`, `opacities`, `strokeWidths`), a typed registry with a lazy `Icon`, names made from the folder structure, cleanup, and a `--check` for CI. If you need one component from one SVG, SVGR is enough.
 
 ### Why does the registry say `icons.camera` for a top-level icon?
 

@@ -7,7 +7,7 @@ export interface ReactSvgIconsConfig {
   input: string;
   /** Folder the components are written to. */
   outDir: string;
-  /** Words dropped from every icon name, in any case: `[vuesax, icon]`. */
+  /** Words dropped from every icon name, in any case: `[ic, icon]`. */
   removeWords?: string[];
   /** The `size` an icon has when none is given. Default 24. */
   defaultSize?: number;

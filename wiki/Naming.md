@@ -21,7 +21,7 @@ From the file name, in this order:
 | `camera.svg` | `icons` (the input folder) | `Camera` | `camera.tsx` |
 | `calendar-add.svg` | `linear` | `CalendarAdd` | `linear/calendar-add.tsx` |
 | `bold-logout.svg` | `bold` | `Logout` | `bold/logout.tsx` |
-| `vuesax linear eye.svg` | `linear`, with `removeWords: [vuesax]` | `Eye` | `linear/eye.tsx` |
+| `ic linear eye.svg` | `linear`, with `removeWords: [ic]` | `Eye` | `linear/eye.tsx` |
 | `add_road-round.svg` | `icons` | `AddRoadRound` | `add-road-round.tsx` |
 | `2FA.svg` | any | `Icon2Fa` | `icon2fa.tsx` |
 | `icon.svg` | any | `Icon` | `icon.tsx` |

@@ -30,7 +30,7 @@ test("names: words, numbers, the folder name and removeWords", () => {
   assert.equal(clean("Icon 24 Home.svg", "bold"), "Home");
   assert.equal(clean("calendar-add.svg", "linear"), "CalendarAdd");
   assert.equal(clean("bold-logout.svg", "bold"), "Logout");
-  assert.equal(clean("vuesax linear eye.svg", "linear", ["vuesax"]), "Eye");
+  assert.equal(clean("ic linear eye.svg", "linear", ["ic"]), "Eye");
   assert.equal(clean("2FA.svg", "x"), "Icon2Fa");
   assert.equal(clean("icon.svg", "x"), "Icon");
   assert.equal(toKebabCase("CalendarAdd"), "calendar-add");

@@ -1,74 +1,50 @@
 # @mrzr/react-svg-icons
 
-[![npm](https://img.shields.io/npm/v/@mrzr/react-svg-icons)](https://www.npmjs.com/package/@mrzr/react-svg-icons)
-[![types](https://img.shields.io/npm/types/@mrzr/react-svg-icons)](https://www.npmjs.com/package/@mrzr/react-svg-icons)
-[![license](https://img.shields.io/npm/l/@mrzr/react-svg-icons)](LICENSE)
-
-Turn the SVG icons you export from Figma into typed React components. Each icon takes `size`, `color` and a prop per colour in the drawing, and a lazy `Icon` loads any of them by name.
-
-**[Wiki](https://github.com/mohammadreza-zr/react-svg-icons/wiki)** · [Quick start](https://github.com/mohammadreza-zr/react-svg-icons/wiki/Quick-Start) · [Components](https://github.com/mohammadreza-zr/react-svg-icons/wiki/Components) · [Configuration](https://github.com/mohammadreza-zr/react-svg-icons/wiki/Configuration) · [Changelog](https://github.com/mohammadreza-zr/react-svg-icons/blob/main/CHANGELOG.md)
+Turn a folder of SVG files into typed React components (TSX). Every icon gets props for its size and colours, so you can restyle it without editing the SVG.
 
 ```bash
 npm install --save-dev @mrzr/react-svg-icons
-npx @mrzr/react-svg-icons
+npx react-svg-icons
 ```
-
----
-
-## Is this for you?
-
-**Use it if**
-
-- Your icons are SVG files exported from Figma, grouped in folders (`bold/`, `linear/`, …)
-- You use React, and want an icon to be a component that takes `size` and `color`
-- You want two-tone icons whose colours you can set one by one
-- You want CI to fail when someone adds an SVG but forgets to regenerate
-
-**Use something else if not.** It writes React components only: no Vue, Svelte or sprite sheet. For a single icon set from npm, use that set's own package.
 
 ---
 
 ## Quick start
 
-Put the exported SVGs in a folder (subfolders are variants) and add `react-svg-icons.config.yaml` next to your `package.json`:
+Put your SVG files in a folder (subfolders are variants) and add `react-svg-icons.config.yaml` next to your `package.json`:
 
 <!-- verbatim: examples/basic/react-svg-icons.config.yaml -->
 ```yaml
 input: icons
 outDir: generated
-
-# Words dropped from every icon name.
-removeWords: [vuesax, icon]
 ```
 
 ```bash
-npx @mrzr/react-svg-icons           # writes the components into generated/
-npx @mrzr/react-svg-icons --check   # writes nothing; exit code 1 when they are out of date
+npx react-svg-icons           # writes the components into generated/
+npx react-svg-icons --check   # writes nothing; exit code 1 when they are out of date
 ```
+
+Use an icon by name, loaded on demand, or import it directly:
 
 ```tsx
 import { Icon } from "./generated";
 import { Logout } from "./generated/bold";
 
-<Icon name="bold.logout" size={20} />   {/* loaded on demand, the name is typed */}
-<Logout size={20} color="crimson" />    {/* imported directly */}
+<Icon name="bold.logout" size={20} />
+<Logout size={20} color="crimson" />
 ```
 
-The config can also be `.yml`, `.json` or an rc file (`.react-svg-iconsrc`). It is always data, never a script.
+The config can also be `.yml`, `.json` or an rc file (`.react-svg-iconsrc`).
 
 ---
 
-## What it does
+## What you get
 
-- **One component per SVG**, optimised with SVGO, with `size`, `color`, `stroke`, `fill`, `strokeWidth`, `opacity`, a `title` for accessibility, and a forwarded `ref`
-- **A prop per colour**: `colors={["red", "blue"]}` sets the first and the second colour of the drawing, and `opacities` and `strokeWidths` do the same
-- **A lazy `Icon`** and a typed registry: `name="bold.logout"`, one chunk per icon
-- **Prettier-formatted output** with your project's prettier and its config, so `--check` passes after your own formatting
-- **`--check`** and cleanup: a generated file for an SVG you removed is deleted, and nothing else is ever deleted
-
-## What it does not do
-
-No Vue, Svelte or sprite output. Gradients, masks and ids are kept as they are, so two icons that use the same id can clash on one page. The `style` attribute of an SVG is dropped, and `stroke-width` becomes one prop for the whole icon. The [Home](https://github.com/mohammadreza-zr/react-svg-icons/wiki) page lists every limit.
+- **A typed component per SVG**, optimised with SVGO, with a forwarded `ref`
+- **Props to customise it**: `size`, `color`, `stroke`, `fill`, `strokeWidth`, `opacity`, `title`, and `colors`, `opacities`, `strokeWidths` lists that set the colours of the drawing one by one
+- **A typed `name`** for `Icon`: `name="bold.logut"` is a type error, and each icon loads as its own chunk
+- **Output formatted by your own prettier**, so it matches what your formatting would leave
+- **`--check`** for CI, and cleanup of generated files whose SVG you removed. A file the tool did not write is never touched
 
 ---
 
@@ -83,7 +59,7 @@ Everything is in the **[Wiki](https://github.com/mohammadreza-zr/react-svg-icons
 
 ## Requirements
 
-Node.js 20 or newer. The generated code needs React (tested with 19) and a bundler-style module resolution (`"moduleResolution": "bundler"` in TypeScript), because its imports have no file extension.
+Node.js 20 or newer. The generated code needs React (tested with 19) and, in TypeScript, `"moduleResolution": "bundler"`, because its imports have no file extension.
 
 ## License
 

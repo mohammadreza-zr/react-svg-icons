@@ -1,6 +1,6 @@
 # Input format
 
-The input is a folder of SVG files, as Figma exports them. Subfolders are variants.
+The input is a folder of SVG files. Subfolders are variants.
 
 ---
 

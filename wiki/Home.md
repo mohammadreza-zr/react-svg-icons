@@ -1,24 +1,11 @@
 # @mrzr/react-svg-icons
 
-Turn the SVG icons you export from Figma into typed React components. Each icon takes `size`, `color` and a prop per colour in the drawing, and a lazy `Icon` loads any of them by name.
+Turn a folder of SVG files into typed React components (TSX). Every icon gets props for its size and colours, so you can restyle it without editing the SVG.
 
 ```bash
 npm install --save-dev @mrzr/react-svg-icons
 npx @mrzr/react-svg-icons
 ```
-
----
-
-## Is this for you?
-
-**Use it if**
-
-- Your icons are SVG files exported from Figma, grouped in folders (`bold/`, `linear/`, …)
-- You use React, and want an icon to be a component that takes `size` and `color`
-- You want two-tone icons whose colours you can set one by one
-- You want CI to fail when someone adds an SVG but forgets to regenerate
-
-**Use something else if not.** It writes React components only: no Vue, Svelte or sprite sheet. If you use one icon set from npm, use that set's own package.
 
 ---
 
@@ -35,18 +22,17 @@ npx @mrzr/react-svg-icons
 
 ---
 
-## What it does not do
+## Limits
 
-Read these before you adopt it. Each one is tested behaviour, not a guess.
+What the output does not do. Each one is tested behaviour, not a guess.
 
-- **React only.** No Vue, Svelte, Solid, or sprite output.
 - **The `style` attribute of an SVG is dropped.** Presentation attributes (`fill`, `stroke`, `fill-rule`, …) are kept.
 - **`stroke-width` becomes one prop for the icon.** The default is the most common width among the shapes left after SVGO has merged them (the first one on a tie). An icon that mixes widths loses the difference unless you pass `strokeWidths`.
 - **Gradients are not parameterised.** A `url(#…)` fill stays as it is, and so do gradient stop colours.
 - **Ids are not made unique.** A `<clipPath id="clip0">` is written as it is. Two icons with the same id on one page can clash.
 - **`Icon` ignores the stroke width of the SVG.** It always passes `strokeWidth` (default 2). Import the component directly to get the width the SVG has. See [[Icon-Component]].
 - **Imports have no file extension.** The generated code needs a bundler-style resolution (`"moduleResolution": "bundler"`); with `nodenext` TypeScript reports TS2835.
-- **No watch mode.** Run it again after you export.
+- **No watch mode.** Run it again after you change an SVG.
 
 ---
 

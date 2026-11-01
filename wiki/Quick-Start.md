@@ -6,7 +6,7 @@ This page uses [`examples/basic`](https://github.com/mohammadreza-zr/react-svg-i
 
 ## 1. Export the SVGs
 
-Export your icons from Figma as SVG and put them in one folder. Subfolders are variants. The example has one icon at the top and two variants:
+Put your icons as SVG files in one folder. Subfolders are variants. The example has one icon at the top and two variants:
 
 ```
 icons/
@@ -28,9 +28,6 @@ What the files may contain is in [[Input-Format]].
 ```yaml
 input: icons
 outDir: generated
-
-# Words dropped from every icon name.
-removeWords: [vuesax, icon]
 ```
 
 `input` and `outDir` are the only required options. Relative paths are relative to the folder that holds the config file. Every option is in [[Configuration]].
