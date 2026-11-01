@@ -18,10 +18,6 @@ An icon directly in the input folder has no variant, so it takes the input folde
 
 SVGO runs first and shortens colours. The list shows what is left after it.
 
-### Why does `Icon` draw a thicker icon than the component I import?
-
-`Icon` always passes `strokeWidth` (2 by default), the imported component uses the width its SVG has. Set `defaultStrokeWidth` to your set's width, or pass `strokeWidth`. See [[Icon-Component]].
-
 ### Can I use the icons in a server component?
 
 The icon components have no hooks or state and can render on the server. `icon.tsx` starts with `"use client"` because it uses `React.lazy` and `Suspense` with a client-side import; import the components directly in a server component.

@@ -20,7 +20,7 @@ outDir: generated
 | `outDir` | `string` | required | The folder the components are written to |
 | `removeWords` | `string[]` | `[]` | Words dropped from every icon name |
 | `defaultSize` | `number` | `24` | The `size` of an icon when none is given |
-| `defaultStrokeWidth` | `number` | `2` | The `strokeWidth` of an icon whose SVG has none, and what `Icon` passes |
+| `defaultStrokeWidth` | `number` | `2` | The `strokeWidth` of an icon whose SVG has none |
 | `format` | `"prettier"` or `false` | `"prettier"` | Format the output with the project's prettier, or write it raw |
 
 ## `input` and `outDir`
@@ -44,7 +44,7 @@ defaultSize: 20
 defaultStrokeWidth: 1.5
 ```
 
-`defaultSize` is the default of the `size` prop of every icon and of `Icon`. `defaultStrokeWidth` is the default of `strokeWidth` for an SVG that has no `stroke-width`, and the value `Icon` always passes ([[Icon-Component]]). Both must be positive numbers.
+`defaultSize` is the default of the `size` prop of every icon and of `Icon`. `defaultStrokeWidth` is the default of `strokeWidth` for an SVG that has no `stroke-width`: an SVG that has one keeps it. Both must be positive numbers.
 
 ## `format`
 

@@ -137,16 +137,16 @@ test("Icon loads the icon of a registry name lazily and renders it", async () =>
   const html = await renderLazy(h(Icon, { name: "bold.logout", size: 20, className: "k" }));
   assert.match(html, /<svg[^>]*width="20"[^>]*class="k"[^>]*>/);
   assert.match(html, /<path /);
-  // Icon always passes strokeWidth (default 2), so it overrides the width the SVG itself has (1.5).
-  assert.match(html, /stroke-width="2"/);
-  const { Logout } = bundle(dir, "bold/logout.tsx");
-  assert.match(render(h(Logout)), /stroke-width="1\.5"/);
+  // Icon does not pass strokeWidth, so the icon keeps the width its SVG has (1.5).
+  assert.match(html, /stroke-width="1\.5"/);
+  assert.doesNotMatch(html, /stroke-width="2"/);
 });
 
 test("Icon defaults come from the config", () => {
   const dir = project({ "react-svg-icons.config.yaml": RAW + "defaultSize: 18\ndefaultStrokeWidth: 1\n" });
   assert.ok(generated(dir));
-  assert.match(read(dir, "icon.tsx"), /size: 18,\n  color: "currentColor",\n  strokeWidth: 1,/);
+  assert.match(read(dir, "icon.tsx"), /size: 18,\n  color: "currentColor",\n\};/);
+  assert.doesNotMatch(read(dir, "icon.tsx"), /strokeWidth: /);
   assert.match(read(dir, "camera.tsx"), /size = 18,/);
   assert.match(read(dir, "bulk/eye.tsx"), /strokeWidth = 1,/);
 });

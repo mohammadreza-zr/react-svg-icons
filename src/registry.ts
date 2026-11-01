@@ -35,7 +35,7 @@ export type IconName = keyof typeof iconRegistry;
 `;
 }
 
-export function iconComponentCode(defaultSize: number, defaultStrokeWidth: number): string {
+export function iconComponentCode(defaultSize: number): string {
   return `${HEADER}
 "use client";
 
@@ -62,7 +62,6 @@ export type IconProps = Omit<
 const DEFAULT_ICON_PROPS = {
   size: ${defaultSize},
   color: "currentColor",
-  strokeWidth: ${defaultStrokeWidth},
 };
 
 type RegistryLoader = (typeof iconRegistry)[IconName];

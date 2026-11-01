@@ -87,7 +87,7 @@ function walkTree(node: Tree, isRoot: boolean, outDir: string, config: ResolvedC
     // variant would pull every icon of it into one chunk and defeat the lazy
     // imports of the registry.
     out.push({ path: path.join(currentDir, "registry.ts"), content: registryCode(allFiles) });
-    out.push({ path: path.join(currentDir, "icon.tsx"), content: iconComponentCode(config.defaultSize, config.defaultStrokeWidth) });
+    out.push({ path: path.join(currentDir, "icon.tsx"), content: iconComponentCode(config.defaultSize) });
     index += `export * from "./registry";\nexport * from "./icon";\n`;
   } else {
     for (const file of generated) {

@@ -58,10 +58,6 @@ The generated files import each other without a file extension, which `nodenext`
 
 The slots are numbered by the rules in [[Components]]. Open the generated file: its header lists `colors[0]`, `colors[1]`, … with the colour each one had. Two shapes with the same colour share a slot.
 
-### An icon from `Icon` is thicker than the same icon imported directly
-
-`Icon` always passes `strokeWidth`. See [[Icon-Component]].
-
 ### Two icons on a page show each other's gradient or clip
 
 Ids from the SVGs are kept, so two icons that both define `id="clip0"` clash. Rename the id in one of the SVGs, or do not put both on one page.

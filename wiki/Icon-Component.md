@@ -35,21 +35,9 @@ export type IconName = keyof typeof iconRegistry;
 - **Loads lazily.** The first time a name is shown, `React.lazy` imports that icon's module, so a bundler puts each icon in its own chunk. One lazy wrapper is made per name and kept, because a new `React.lazy` on every render would remount the icon each time.
 - **Shows a placeholder while it loads**: an empty `<svg>` of the same `size`, with the same `className` and `aria-hidden="true"`, inside `React.Suspense`.
 - **Passes your props on.** It takes every prop of the icon ([[Components]]) plus `name`, and forwards `ref`.
-- **Fills in defaults**: `size` (option `defaultSize`), `color="currentColor"` and `strokeWidth` (option `defaultStrokeWidth`). Your props replace them.
+- **Fills in defaults**: `size` (option `defaultSize`) and `color="currentColor"`. Your props replace them. The stroke width is the one the SVG has, as when you import the component.
 - **Warns about an unknown name** and renders nothing. Outside production it logs `[Icon] Unknown icon name: "x".` through `console.warn`. TypeScript already rejects such a name, so this only happens with a value that is not typed.
 - **Starts with `"use client"`**, so it can be used from a client component in a server-components framework.
-
-## `Icon` and the stroke width
-
-`Icon` always passes `strokeWidth` (the option `defaultStrokeWidth`, 2 by default) to the icon. An icon loaded through `Icon` therefore ignores the stroke width its SVG has. The test suite checks it with `logout`, which is drawn at 1.5:
-
-| How | `stroke-width` |
-|---|---|
-| `<Icon name="bold.logout" />` | `2` |
-| `<Logout />`, imported from `./generated/bold` | `1.5` |
-| `<Icon name="bold.logout" strokeWidth={1.5} />` | `1.5` |
-
-To get the width of the SVG everywhere, import the component, or pass `strokeWidth`. Set `defaultStrokeWidth` to the width your set is drawn at to make `Icon` match it.
 
 ## Importing a component directly
 

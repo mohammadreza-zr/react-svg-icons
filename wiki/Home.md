@@ -30,7 +30,6 @@ What the output does not do. Each one is tested behaviour, not a guess.
 - **`stroke-width` becomes one prop for the icon.** The default is the most common width among the shapes left after SVGO has merged them (the first one on a tie). An icon that mixes widths loses the difference unless you pass `strokeWidths`.
 - **Gradients are not parameterised.** A `url(#…)` fill stays as it is, and so do gradient stop colours.
 - **Ids are not made unique.** A `<clipPath id="clip0">` is written as it is. Two icons with the same id on one page can clash.
-- **`Icon` ignores the stroke width of the SVG.** It always passes `strokeWidth` (default 2). Import the component directly to get the width the SVG has. See [[Icon-Component]].
 - **Imports have no file extension.** The generated code needs a bundler-style resolution (`"moduleResolution": "bundler"`); with `nodenext` TypeScript reports TS2835.
 - **No watch mode.** Run it again after you change an SVG.
 

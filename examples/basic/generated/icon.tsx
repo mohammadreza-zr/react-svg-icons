@@ -26,7 +26,6 @@ export type IconProps = Omit<
 const DEFAULT_ICON_PROPS = {
   size: 24,
   color: "currentColor",
-  strokeWidth: 2,
 };
 
 type RegistryLoader = (typeof iconRegistry)[IconName];

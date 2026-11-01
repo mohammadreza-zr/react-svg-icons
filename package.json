@@ -1,6 +1,6 @@
 {
   "name": "@mrzr/react-svg-icons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Turn a folder of SVG icons into typed React components, with a prop per colour and a lazy-loaded Icon.",
   "keywords": [
     "icons",

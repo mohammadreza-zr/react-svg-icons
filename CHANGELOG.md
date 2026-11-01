@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- **`Icon` keeps the stroke width of the SVG.** It no longer passes `strokeWidth`, so an icon loaded by name is drawn with the width it has when imported directly (`logout` at 1.5, not 2). `defaultStrokeWidth` now only applies to an SVG that has no `stroke-width`. If you relied on `Icon` forcing the width, pass `strokeWidth` to it.
+- The README and the wiki say what the tool does, and no longer mention Figma or other frameworks.
+- A test no longer depends on whether `tsc` prints colours, which failed `npm publish` in a terminal that forces them.
+
 ## 0.1.0
 
 First release.
