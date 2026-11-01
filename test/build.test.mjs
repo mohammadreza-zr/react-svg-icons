@@ -329,7 +329,7 @@ test("IconName rejects a name that is not in the registry, at type-check time", 
   const tsc = require.resolve("typescript/bin/tsc");
   const r = spawnSync(
     process.execPath,
-    [tsc, "--ignoreConfig", "--noEmit", "--strict", "--skipLibCheck", "--jsx", "react-jsx", "--module", "esnext", "--moduleResolution", "bundler", "--types", "node", "--typeRoots", join(root, "node_modules/@types"), join(dir, "generated/usage.tsx")],
+    [tsc, "--ignoreConfig", "--pretty", "false", "--noEmit", "--strict", "--skipLibCheck", "--jsx", "react-jsx", "--module", "esnext", "--moduleResolution", "bundler", "--types", "node", "--typeRoots", join(root, "node_modules/@types"), join(dir, "generated/usage.tsx")],
     { cwd: dir, encoding: "utf8" },
   );
   assert.equal(r.status, 2);

@@ -32,7 +32,7 @@ export function typecheck(dir) {
   return spawnSync(
     process.execPath,
     [
-      tsc, "--ignoreConfig", "--noEmit", "--strict", "--skipLibCheck", "--jsx", "react-jsx",
+      tsc, "--ignoreConfig", "--pretty", "false", "--noEmit", "--strict", "--skipLibCheck", "--jsx", "react-jsx",
       "--target", "es2022", "--module", "esnext", "--moduleResolution", "bundler",
       "--types", "node", "--typeRoots", join(root, "node_modules/@types"),
       ...["icon.tsx", "registry.ts", "index.ts"].map((f) => join(dir, "generated", f)),
