@@ -4,10 +4,10 @@ import path from "node:path";
 import { compare, generate, write } from "./build.js";
 import { findConfig, loadConfig } from "./config.js";
 
-const HELP = `react-svg-icons — SVG icons to typed React components
+const HELP = `@mrzr/react-svg-icons — SVG icons to typed React components
 
 Usage:
-  react-svg-icons [build] [--config <file>] [--check]
+  npx @mrzr/react-svg-icons [build] [--config <file>] [--check]
 
 Options:
   --config <file>  Config file (default: react-svg-icons.config.yaml|yml|json or .react-svg-iconsrc in the cwd)
@@ -34,9 +34,9 @@ function parse(argv: string[]): Args {
     else if (arg === "-v" || arg === "--version") args.version = true;
     else if (arg === "--config") {
       const value = rest[++i];
-      if (!value) throw new Error("react-svg-icons: --config needs a file");
+      if (!value) throw new Error("@mrzr/react-svg-icons: --config needs a file");
       args.config = value;
-    } else throw new Error(`react-svg-icons: unknown argument "${arg}" (see --help)`);
+    } else throw new Error(`@mrzr/react-svg-icons: unknown argument "${arg}" (see --help)`);
   }
   return args;
 }

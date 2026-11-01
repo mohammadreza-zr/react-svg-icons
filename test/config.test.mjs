@@ -81,7 +81,7 @@ test("--version, --help and an unknown argument", () => {
   const dir = project();
   const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
   assert.equal(run(dir, "--version").stdout.trim(), pkg.version);
-  assert.match(run(dir, "--help").stdout, /react-svg-icons — SVG icons to typed React components/);
+  assert.match(run(dir, "--help").stdout, /@mrzr\/react-svg-icons — SVG icons to typed React components/);
   const bad = run(dir, "--chek");
   assert.equal(bad.status, 1);
   assert.match(bad.stderr, /unknown argument "--chek"/);

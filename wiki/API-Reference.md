@@ -76,7 +76,7 @@ Applies the defaults ([[Configuration]]) and lower-cases `removeWords`. Throws w
 findConfig(cwd: string, explicit?: string): string
 ```
 
-Returns the absolute path of the config: `explicit` resolved against `cwd`, or the first of the default names found in `cwd`, in the order listed in [[CLI]]. Throws `react-svg-icons: no config at <file>` or `react-svg-icons: no config found; create react-svg-icons.config.yaml (see the README)`.
+Returns the absolute path of the config: `explicit` resolved against `cwd`, or the first of the default names found in `cwd`, in the order listed in [[CLI]]. Throws `@mrzr/react-svg-icons: no config at <file>` or `@mrzr/react-svg-icons: no config found; create react-svg-icons.config.yaml (see the README)`.
 
 ## `loadConfig(file)`
 
@@ -84,7 +84,7 @@ Returns the absolute path of the config: `explicit` resolved against `cwd`, or t
 loadConfig(file: string): Promise<ReactSvgIconsConfig>
 ```
 
-Parses a file ending in `.json` as JSON and any other file as YAML. Throws `react-svg-icons: <file> is not valid YAML (…)` (or `JSON`), `react-svg-icons: <file> must hold a mapping of options`, and `react-svg-icons: <file> is a script; the config must be YAML or JSON` for a `.js`, `.mjs`, `.cjs` or `.ts` file. The paths in the result are **not** resolved: pass the folder of the config file as `cwd` to `generate`, as the CLI does.
+Parses a file ending in `.json` as JSON and any other file as YAML. Throws `@mrzr/react-svg-icons: <file> is not valid YAML (…)` (or `JSON`), `@mrzr/react-svg-icons: <file> must hold a mapping of options`, and `@mrzr/react-svg-icons: <file> is a script; the config must be YAML or JSON` for a `.js`, `.mjs`, `.cjs` or `.ts` file. The paths in the result are **not** resolved: pass the folder of the config file as `cwd` to `generate`, as the CLI does.
 
 ## Types
 

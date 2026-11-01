@@ -3,7 +3,7 @@ import path from "node:path";
 import { formatFiles } from "./format.js";
 import { generateComponentCode } from "./component.js";
 import { resolveConfig, type ReactSvgIconsConfig, type ResolvedConfig } from "./config.js";
-import { HEADER, MARKER } from "./header.js";
+import { HEADER, MARKER_PATTERN } from "./header.js";
 import { cleanIconName, toCamelCase, toKebabCase } from "./names.js";
 import { iconComponentCode, registryCode, type IconFile } from "./registry.js";
 
@@ -64,7 +64,7 @@ function walkTree(node: Tree, isRoot: boolean, outDir: string, config: ResolvedC
     const stem = fileName.replace(".tsx", "");
     if (stem === "index" || (isRoot && (stem === "icon" || stem === "registry"))) {
       throw new Error(
-        `react-svg-icons: ${file.fullPath} would be written to ${fileName}, a name the generated ${stem} file already uses; rename the SVG`,
+        `@mrzr/react-svg-icons: ${file.fullPath} would be written to ${fileName}, a name the generated ${stem} file already uses; rename the SVG`,
       );
     }
 
@@ -105,15 +105,15 @@ export async function generate(input: ReactSvgIconsConfig, cwd = process.cwd()):
   const config = resolveConfig(input);
   const inputDir = path.resolve(cwd, config.input);
   const outDir = path.resolve(cwd, config.outDir);
-  if (!existsSync(inputDir)) throw new Error(`react-svg-icons: input folder not found: ${inputDir}`);
+  if (!existsSync(inputDir)) throw new Error(`@mrzr/react-svg-icons: input folder not found: ${inputDir}`);
   if (outDir === inputDir || inputDir.startsWith(outDir + path.sep)) {
-    throw new Error(`react-svg-icons: outDir (${outDir}) must not hold the input folder (${inputDir})`);
+    throw new Error(`@mrzr/react-svg-icons: outDir (${outDir}) must not hold the input folder (${inputDir})`);
   }
   const tree = buildTree(inputDir);
   const files: OutputFile[] = [];
   walkTree(tree, true, outDir, config, files);
   const iconCount = files.filter((f) => f.path.endsWith(".tsx") && !f.path.endsWith(`${path.sep}icon.tsx`)).length;
-  if (iconCount === 0) throw new Error(`react-svg-icons: no .svg files in ${inputDir}`);
+  if (iconCount === 0) throw new Error(`@mrzr/react-svg-icons: no .svg files in ${inputDir}`);
   return { outDir, files: await formatFiles(files, cwd, config.format) };
 }
 
@@ -125,7 +125,7 @@ function existingGenerated(dir: string): string[] {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) found.push(...existingGenerated(full));
-    else if (/\.tsx?$/.test(entry.name) && readFileSync(full, "utf8").slice(0, 200).includes(MARKER)) found.push(full);
+    else if (/\.tsx?$/.test(entry.name) && MARKER_PATTERN.test(readFileSync(full, "utf8").slice(0, 200))) found.push(full);
   }
   return found;
 }

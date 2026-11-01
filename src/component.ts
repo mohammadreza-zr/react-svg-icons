@@ -53,12 +53,12 @@ export function generateComponentCode(
   try {
     ast = parseSync(optimizeSvg(rawSvg));
   } catch (error) {
-    throw new Error(`react-svg-icons: ${file} is not a valid SVG (${(error as Error).message})`);
+    throw new Error(`@mrzr/react-svg-icons: ${file} is not a valid SVG (${(error as Error).message})`);
   }
   const svgNode = (ast.name === "svg" ? ast : (ast.children || []).find((n) => n.name === "svg")) as
     | IconNode
     | undefined;
-  if (!svgNode) throw new Error(`react-svg-icons: no <svg> root in ${file}`);
+  if (!svgNode) throw new Error(`@mrzr/react-svg-icons: no <svg> root in ${file}`);
   svgNode.attributes = svgNode.attributes || {};
 
   const fallbackWidth = Number.parseFloat(svgNode.attributes.width || "24");

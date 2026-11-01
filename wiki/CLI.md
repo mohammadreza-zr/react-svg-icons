@@ -13,7 +13,7 @@ react-svg-icons [build] [--config <file>] [--check]
 | `-v`, `--version` | Print the version |
 | `-h`, `--help` | Print the usage |
 
-Any other argument stops with `react-svg-icons: unknown argument "--chek" (see --help)` and exit code 1.
+Any other argument stops with `@mrzr/react-svg-icons: unknown argument "--chek" (see --help)` and exit code 1.
 
 ---
 
@@ -29,7 +29,7 @@ Without `--config`, the command looks in the **current directory** (not in paren
 6. `.react-svg-iconsrc.yml`
 7. `.react-svg-iconsrc.json`
 
-A file whose name ends in `.json` is read as JSON. Every other file is read as YAML, which includes the `.react-svg-iconsrc` file with no extension; JSON is valid YAML, so that file may hold either. A script (`.js`, `.mjs`, `.cjs`, `.ts`, …) is not a config: it stops with `react-svg-icons: <file> is a script; the config must be YAML or JSON`.
+A file whose name ends in `.json` is read as JSON. Every other file is read as YAML, which includes the `.react-svg-iconsrc` file with no extension; JSON is valid YAML, so that file may hold either. A script (`.js`, `.mjs`, `.cjs`, `.ts`, …) is not a config: it stops with `@mrzr/react-svg-icons: <file> is a script; the config must be YAML or JSON`.
 
 With `--config`, that file is used and must exist. Relative `input` and `outDir` are resolved against the folder of the config file, so this works from any directory:
 

@@ -38,7 +38,7 @@ In one folder, the second gets a number: `AB`, then `AB2`, `AB3`, with files `ab
 
 ## Names the tool keeps for itself
 
-An SVG whose component file would be `index.tsx` (anywhere), or `icon.tsx` or `registry.tsx` (at the top of the input folder), stops the run with `react-svg-icons: <file> would be written to icon.tsx, a name the generated icon file already uses; rename the SVG`. Without that, it would overwrite the generated file, or sit beside it with the same import name. `icon.svg` and `registry.svg` inside a variant folder are fine.
+An SVG whose component file would be `index.tsx` (anywhere), or `icon.tsx` or `registry.tsx` (at the top of the input folder), stops the run with `@mrzr/react-svg-icons: <file> would be written to icon.tsx, a name the generated icon file already uses; rename the SVG`. Without that, it would overwrite the generated file, or sit beside it with the same import name. `icon.svg` and `registry.svg` inside a variant folder are fine.
 
 ## The registry name
 

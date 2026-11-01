@@ -4,7 +4,7 @@ Turn a folder of SVG files into typed React components (TSX). Every icon gets pr
 
 ```bash
 npm install --save-dev @mrzr/react-svg-icons
-npx react-svg-icons
+npx @mrzr/react-svg-icons
 ```
 
 ---
@@ -20,8 +20,8 @@ outDir: generated
 ```
 
 ```bash
-npx react-svg-icons           # writes the components into generated/
-npx react-svg-icons --check   # writes nothing; exit code 1 when they are out of date
+npx @mrzr/react-svg-icons           # writes the components into generated/
+npx @mrzr/react-svg-icons --check   # writes nothing; exit code 1 when they are out of date
 ```
 
 Use an icon by name, loaded on demand, or import it directly:

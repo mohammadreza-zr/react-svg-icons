@@ -36,24 +36,24 @@ export function resolveConfig(config: ReactSvgIconsConfig): ResolvedConfig {
   for (const key of Object.keys(config)) {
     if (!OPTIONS.includes(key)) {
       throw new Error(
-        `react-svg-icons: unknown option "${key}" (options: ${OPTIONS.join(", ")})`,
+        `@mrzr/react-svg-icons: unknown option "${key}" (options: ${OPTIONS.join(", ")})`,
       );
     }
   }
-  if (!config.input) throw new Error("react-svg-icons: `input` is required");
-  if (!config.outDir) throw new Error("react-svg-icons: `outDir` is required");
+  if (!config.input) throw new Error("@mrzr/react-svg-icons: `input` is required");
+  if (!config.outDir) throw new Error("@mrzr/react-svg-icons: `outDir` is required");
   const number = (name: string, value: number | undefined, fallback: number) => {
     if (value === undefined) return fallback;
     if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
-      throw new Error(`react-svg-icons: \`${name}\` must be a positive number`);
+      throw new Error(`@mrzr/react-svg-icons: \`${name}\` must be a positive number`);
     }
     return value;
   };
   if (config.removeWords !== undefined && !Array.isArray(config.removeWords)) {
-    throw new Error("react-svg-icons: `removeWords` must be a list of words");
+    throw new Error("@mrzr/react-svg-icons: `removeWords` must be a list of words");
   }
   if (config.format !== undefined && config.format !== "prettier" && config.format !== false) {
-    throw new Error('react-svg-icons: `format` must be "prettier" or false');
+    throw new Error('@mrzr/react-svg-icons: `format` must be "prettier" or false');
   }
   return {
     input: config.input,
@@ -80,7 +80,7 @@ const SCRIPT = /\.(c|m)?(j|t)s$/;
 export function findConfig(cwd: string, explicit?: string): string {
   if (explicit) {
     const file = path.resolve(cwd, explicit);
-    if (!existsSync(file)) throw new Error(`react-svg-icons: no config at ${file}`);
+    if (!existsSync(file)) throw new Error(`@mrzr/react-svg-icons: no config at ${file}`);
     return file;
   }
   for (const name of CONFIG_NAMES) {
@@ -88,13 +88,13 @@ export function findConfig(cwd: string, explicit?: string): string {
     if (existsSync(file)) return file;
   }
   throw new Error(
-    `react-svg-icons: no config found; create ${CONFIG_NAMES[0]} (see the README)`,
+    `@mrzr/react-svg-icons: no config found; create ${CONFIG_NAMES[0]} (see the README)`,
   );
 }
 
 export async function loadConfig(file: string): Promise<ReactSvgIconsConfig> {
   if (SCRIPT.test(file)) {
-    throw new Error(`react-svg-icons: ${file} is a script; the config must be YAML or JSON`);
+    throw new Error(`@mrzr/react-svg-icons: ${file} is a script; the config must be YAML or JSON`);
   }
   const text = readFileSync(file, "utf8").replace(/^﻿/, "");
   const isJson = file.endsWith(".json");
@@ -103,11 +103,11 @@ export async function loadConfig(file: string): Promise<ReactSvgIconsConfig> {
     parsed = isJson ? JSON.parse(text) : parseYaml(text);
   } catch (error) {
     throw new Error(
-      `react-svg-icons: ${file} is not valid ${isJson ? "JSON" : "YAML"} (${(error as Error).message})`,
+      `@mrzr/react-svg-icons: ${file} is not valid ${isJson ? "JSON" : "YAML"} (${(error as Error).message})`,
     );
   }
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-    throw new Error(`react-svg-icons: ${file} must hold a mapping of options`);
+    throw new Error(`@mrzr/react-svg-icons: ${file} must hold a mapping of options`);
   }
   return parsed as ReactSvgIconsConfig;
 }

@@ -20,7 +20,7 @@ export function registryCode(files: IconFile[]): string {
     const importPath = "./" + [...file.path, base].join("/");
     const key = registryKey(file);
     if (seen.has(key)) {
-      throw new Error(`react-svg-icons: two icons have the name "${key}": ${seen.get(key)} and ${importPath}`);
+      throw new Error(`@mrzr/react-svg-icons: two icons have the name "${key}": ${seen.get(key)} and ${importPath}`);
     }
     seen.set(key, importPath);
     return `  "${key}": () => import("${importPath}").then((m) => m.${file.componentName}),`;

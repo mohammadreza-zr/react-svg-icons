@@ -30,7 +30,7 @@ export async function formatFiles(
   const prettier = await loadPrettier(cwd);
   if (!prettier) {
     console.warn(
-      "react-svg-icons: prettier is not installed, so the output is not formatted. " +
+      "@mrzr/react-svg-icons: prettier is not installed, so the output is not formatted. " +
         "Install it in the project, or set `format: false` to silence this.",
     );
     return files;
@@ -44,7 +44,7 @@ export async function formatFiles(
         content: await prettier.format(file.content, { ...config, parser: "typescript", filepath: file.path }),
       });
     } catch (error) {
-      throw new Error(`react-svg-icons: the generated ${file.path} does not parse (${(error as Error).message})`);
+      throw new Error(`@mrzr/react-svg-icons: the generated ${file.path} does not parse (${(error as Error).message})`);
     }
   }
   return out;

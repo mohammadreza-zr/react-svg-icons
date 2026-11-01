@@ -193,11 +193,11 @@ test("errors name the file or the folder", async () => {
   writeFileSync(join(bad, "icons/broken.svg"), "<svg><path d=");
   const broken = run(bad);
   assert.equal(broken.status, 1);
-  assert.match(broken.stderr, /react-svg-icons: .*broken\.svg is not a valid SVG/);
+  assert.match(broken.stderr, /@mrzr\/react-svg-icons: .*broken\.svg is not a valid SVG/);
 
   const notSvg = project({ "react-svg-icons.config.yaml": RAW });
   writeFileSync(join(notSvg, "icons/empty.svg"), '<g><path d="M0 0h1"/></g>');
-  assert.match(run(notSvg).stderr, /react-svg-icons: .*empty\.svg is not a valid SVG/);
+  assert.match(run(notSvg).stderr, /@mrzr\/react-svg-icons: .*empty\.svg is not a valid SVG/);
 
   const missing = project({ "react-svg-icons.config.yaml": "input: nope\noutDir: generated\n" });
   assert.match(run(missing).stderr, /input folder not found: .*nope/);
